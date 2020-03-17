@@ -224,7 +224,7 @@ void setup() {
 /*     LOOP()                         */
 /**************************************/
 void loop() {
-  char phone[32]={0};
+  // Flush serial and read messsages from fona
   flushSerial();
   while(fona.available()) {
     Serial.write(fona.read());
@@ -253,7 +253,7 @@ void loop() {
   /* Rotary Dial Reading code follows...*/
   if(RotaryDial::available()) {
     dialString[dialStringIndex]= '0'+RotaryDial::read();
-    dialString[++dialStringIndex]=0;
+    dialStringIndex++;
     lastdigit = millis();
     newline = false;
   } else {
@@ -265,7 +265,7 @@ void loop() {
       if(fona.getCallStatus()==0)
       {
         if (!fona.callPhone(dialString)) {
-          fona.playToolkitTone(2, 10000);
+          fona.playToolkitTone(2, 20000);
           Serial.println(F("Failed"));
         } else {
           Serial.println(F("Sent!"));
