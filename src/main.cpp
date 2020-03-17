@@ -14,14 +14,26 @@
 
 #define FONA_RI_INTERRUPT 4
 
+#define ONHOOK  0
+#define OFFHOOK 1
+#define ON      1 
+#define OFF     2
 
+#define STATE_IDLE      0
+#define STATE_OFFHOOK   1
+#define STATE_INCALL    2
+#define STATE_ONHOOK    3
+
+// Declare a reset function
 void(* resetFunc) (void) = 0;
-
 
 // this is a large buffer for replies
 char replybuffer[255];
-char dialString[20];
-int dialStringIndex=0;
+char dialString[20]; // used for building up outbound dialed number
+int  dialStringIndex=0;
+uint8_t type;  // FONA device type
+unsigned long lastdigit = 0;
+int newline = true;
 
 // We default to using software serial. If you want to use hardware serial
 // (because softserial isnt supported) comment out the following three lines 
@@ -33,32 +45,35 @@ SoftwareSerial *fonaSerial = &fonaSS;
 // Use this for FONA 800 and 808s
 Adafruit_FONA fona = Adafruit_FONA(FONA_RST);
 
+// Function prototypes
 uint8_t readline(char *buff, uint8_t maxbuff, uint16_t timeout = 0);
-uint8_t type;
 
-void KEYtoggle()
+/**************************************/
+/*     support functions follow       */
+/**************************************/
+uint8_t FONApwr(uint8_t mode)
 {
-  digitalWrite(FONA_KEY, HIGH);
-  delay(4000);
-  digitalWrite(FONA_KEY, LOW);
+  if(mode==0){
+    // Power OFF
+    digitalWrite(FONA_KEY, LOW);
+    delay(2000);
+    digitalWrite(FONA_KEY, HIGH);
+    delay(3000);
+  }
+  if(mode==1){
+    // Power ON
+    digitalWrite(FONA_KEY, LOW);
+    delay(2000);
+    digitalWrite(FONA_KEY, HIGH);
+    delay(3000);
+    if (! fona.begin(*fonaSerial)) {
+      Serial.println(F("Couldn't find FONA"));
+      return -1;
+    }
+  }
+  
+  return 0;
 }
-
-
-
-
-#define ONHOOK 0
-#define OFFHOOK 1
-
-#define STATE_IDLE  0
-#define STATE_OFFHOOK  1
-#define STATE_INCALL  2
-#define STATE_ONHOOK 3
-int hookStatus = STATE_ONHOOK;
-int currentState = STATE_IDLE;
-
-unsigned long lastdigit = 0;
-int newline = true;
-
 
 void flushSerial() {
   while (Serial.available())
@@ -69,6 +84,7 @@ char readBlocking() {
   while (!Serial.available());
   return Serial.read();
 }
+
 uint16_t readnumber() {
   uint16_t x = 0;
   char c;
@@ -172,7 +188,6 @@ void setup() {
  
   // configure FONA power key
   pinMode(FONA_KEY, OUTPUT);
-  KEYtoggle();
 
   // show debug
   Serial.begin(115200);
@@ -183,7 +198,7 @@ void setup() {
   fonaSerial->begin(4800);
   if (! fona.begin(*fonaSerial)) {
     Serial.println(F("Couldn't find FONA"));
-    KEYtoggle();
+    FONApwr(ON);
     delay(3000);
     resetFunc(); // FONA device did not respond. Reboot.
     //while (1);
