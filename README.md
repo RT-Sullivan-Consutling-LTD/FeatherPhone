@@ -3,10 +3,10 @@
 
 ```
      Rotary Dial                              Arduino
-                      /---------------------- readyPin
-  /- ready switch (NO) -- pull-up resistor -- VCC
- /-- pulse switch (NC) -- pull-up resistor -/
- \                    \---------------------- pulsePin
+                      /---------------------- readyPin w/pulllup
+  /- ready switch (NO) 
+ /-- pulse switch (NC) 
+ \                    \---------------------- pulsePin w/pullup
   \------------------------------------------ GND
 ```
 
