@@ -12,7 +12,7 @@ The phone hook is a simple switch which is normally open.
 1. Connect one hook wire to pin3
 2. Connect other hook wire to ground
 
-Dialing Detect:
+Dialing Detect:  
 The ready pin is used to indicate that dialing is in progress.  
 1. Connect XXXXXX wire to pin5
 2. Connecct XXXXX wire to ground.
@@ -46,11 +46,11 @@ I bought one from ebay. Perfect working order as they are actually designed to l
 The project is in VSCode using the PlatformIO plugin. RoataryDial is the only additional library needed. 
 
 ## ToDo
-- Implement dialing detection
-- Circuit to power original bell ringer
+- Implement dialing detection  
+- Circuit to power original bell ringer  
 
 ## See also
 Wikipedia: [Rotary dial](http://en.wikipedia.org/wiki/Rotary_dial)  
-Library: [RotaryDial by Tomas Mudrunka](https://github.com/Harvie/RotaryDial)
-Hardware: [Adafruit Feather 32u4 FONA](https://learn.adafruit.com/adafruit-feather-32u4-fona)
+Library: [RotaryDial by Tomas Mudrunka](https://github.com/Harvie/RotaryDial)  
+Hardware: [Adafruit Feather 32u4 FONA](https://learn.adafruit.com/adafruit-feather-32u4-fona)  
 
