@@ -21,19 +21,18 @@ LOW       ...       (repeat)
 HIGH      n/a       rotation complete, count recorded
 ```
 
-I build the project in VSCode using the platformIO plugin. 
-
 ## Circuit Connection
 I use a simple connection to the rotary mechinism. In my case, the pink wire on my dial is the pulse pin. When dialing a number, the pink wire is intermittently connected to the XXXXX wire. So...
 1. Connect Pink wire to pin 2
 2. Connect XXXXX wire to ground
 
-Hook Detection:
+Hook Detection:  
 The phone hook is a simple switch which is normally open. 
 1. Connect one hook wire to pin3
 2. Connect other hook wire to Ground
 
 ## See also
-Wikipedia: Rotary dial http://en.wikipedia.org/wiki/Rotary_dial
-RotaryDial Library by Tomas Mudrunka https://github.com/Harvie/RotaryDial
+Wikipedia: [Rotary dial](http://en.wikipedia.org/wiki/Rotary_dial)  
+Library: [RotaryDial by Tomas Mudrunka](https://github.com/Harvie/RotaryDial)
+
 
