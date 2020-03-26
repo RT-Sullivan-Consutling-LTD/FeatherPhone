@@ -50,7 +50,7 @@ The project is in VSCode using the PlatformIO plugin. RoataryDial is the only ad
 - Circuit to power original bell ringer  
 
 ## See also
-Wikipedia: [Rotary dial](http://en.wikipedia.org/wiki/Rotary_dial)  
+Platform: [Adafruit Feather 32u4 FONA](https://learn.adafruit.com/adafruit-feather-32u4-fona)  
 Library: [RotaryDial by Tomas Mudrunka](https://github.com/Harvie/RotaryDial)  
-Hardware: [Adafruit Feather 32u4 FONA](https://learn.adafruit.com/adafruit-feather-32u4-fona)  
-
+Phone: [Roatary Telephone](https://www.ebay.co.uk/sch/i.html?_from=R40&_nkw=rotary+telephone&_sacat=0&rt=nc&Featured%2520Refinements=GPO%2520Telephone&_dcat=985)  
+Wikipedia: [Rotary dial](http://en.wikipedia.org/wiki/Rotary_dial)  
