@@ -262,7 +262,7 @@ void setup() {
   // Using external audio and mic
   fona.setAudio(FONA_EXTAUDIO);
   fona.setMicVolume(FONA_EXTAUDIO, 30);
-  fona.setVolume(20);
+  fona.setVolume(30);
   flushSerial();
 }
 
