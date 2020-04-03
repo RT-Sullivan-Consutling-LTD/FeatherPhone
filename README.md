@@ -3,19 +3,15 @@
 
 
 ## Circuit Connection
-I use a simple connection to the rotary mechinism. In my case, the pink wire on my dial is the pulse pin. When dialing a number, the pink wire is intermittently connected to the XXXXX wire. So...
+I use a simple connection to the rotary mechinism. In my case, the pink wire on my dial is the pulse pin. When dialing a number, the pink wire is intermittently connected to the orange wire. So...
 1. Connect Pink wire to pin 2
-2. Connect XXXXX wire to ground
+2. Connect Orange wire to ground
 
 Hook Detection:  
 The phone hook is a simple switch which is normally open. 
 1. Connect one hook wire to pin3
 2. Connect other hook wire to ground
 
-Dialing Detect:  
-The ready pin is used to indicate that dialing is in progress.  
-1. Connect XXXXXX wire to pin5
-2. Connecct XXXXX wire to ground.
 ```
      Rotary Dial                              Arduino
                       /---------------------- readyPin w/pulllup
