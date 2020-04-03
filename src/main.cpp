@@ -253,9 +253,7 @@ void setup() {
 
   // Setup rotary dial features
    RotaryDial::setup(ROTARY_DIAL_PULSE_PIN); 
-  // pinMode(ROTARYREADY, INPUT); // Dial pulse ready pin
-  // digitalWrite(ROTARYREADY, HIGH); // Pullup 
-
+  
   // Monitor the phone hook with an interrupt. 
   pinMode(HOOK, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(HOOK),HOOKChg,CHANGE);
@@ -301,13 +299,6 @@ void loop() {
      // fona.setVolume(90);
     }
   } // end HOOKEVT
-
-  // if(digitalRead(HOOK)==ONHOOK && fona.getCallStatus()!=0){
-  //   Serial.print("Call status:");
-  //   Serial.println(fona.getCallStatus());
-  //   fona.hangUp();
-
-  // }
 
   /* Rotary Dial Reading code follows...*/
   if(RotaryDial::available()) {
